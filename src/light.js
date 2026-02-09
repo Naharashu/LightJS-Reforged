@@ -1,8 +1,14 @@
 "use strict";
+/**
+ * @constructor seed(bigint)
+ */
 class SplitMix64 {
     constructor(seed_) {
         this.seed = seed_;
     }
+    /**
+     * @returns bigint(64 bit integer)
+     */
     next() {
         this.seed += 0x9e3779b97f4a7c15n;
         let z = this.seed;
@@ -11,6 +17,11 @@ class SplitMix64 {
         z = z ^ (z >> 31n);
         return z;
     }
+    /**
+    * generates pseudo random value between min and max
+    * @return returns number between 0 and 1
+    * @example myrandom.random() -> 0.43820411523125924
+    */
     random() {
         const z = this.next();
         const x = z >> 11n;
@@ -25,6 +36,15 @@ class SplitMix64 {
     */
     randint(min, max) {
         return Math.floor(this.random() * (max - min) + min);
+    }
+    /**
+     * @param {T} arr array of T type
+     * @returns value in random index
+     */
+    randomInArray(arr) {
+        if (arr.length == 0)
+            throw new Error("Array has no items");
+        return arr[this.randint(0, arr.length)];
     }
 }
 class utilities {
@@ -46,6 +66,15 @@ class utilities {
     */
     deepclone(obj) {
         return JSON.parse(JSON.stringify(obj));
+    }
+    /**
+     *
+     * @param {any} a
+     * @param {any} b
+     * @returns true if types are matched or false if not
+     */
+    eqTypes(a, b) {
+        return (typeof a == typeof b);
     }
 }
 module.exports = {

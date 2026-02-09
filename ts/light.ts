@@ -46,7 +46,8 @@ class SplitMix64 {
      * @returns value in random index
      */
     randomInArray<T>(arr: T[]): T {
-        return arr[Math.floor(this.random() * arr.length)]
+        if(arr.length==0) throw new Error("Array has no items");
+        return arr[this.randint(0, arr.length)];
     }
 }
 
