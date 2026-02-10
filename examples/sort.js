@@ -1,4 +1,4 @@
-const lightjs = require('../src/light');
+import * as lightjs from '../src/light.js';
 
 const sort = new lightjs.sorting;
 

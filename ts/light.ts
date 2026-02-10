@@ -1,7 +1,7 @@
 /**
  * @constructor seed(bigint)
  */
-class SplitMix64 {
+export class SplitMix64 {
     private seed: bigint;
     constructor(seed_: bigint) {
         this.seed = seed_;
@@ -51,7 +51,7 @@ class SplitMix64 {
     }
 }
 
-class utilities {
+export class utilities {
     constructor() { }
     /**
     * simple copy of object by reference
@@ -92,7 +92,7 @@ class utilities {
     }
 }
 
-class sorting {
+export class sorting {
     constructor() {}
 
     /**
@@ -191,8 +191,3 @@ class sorting {
     }
 }
 
-module.exports = {
-    utilities,
-    SplitMix64,
-    sorting
-}

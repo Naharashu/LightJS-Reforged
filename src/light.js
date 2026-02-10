@@ -1,8 +1,7 @@
-"use strict";
 /**
  * @constructor seed(bigint)
  */
-class SplitMix64 {
+export class SplitMix64 {
     constructor(seed_) {
         this.seed = seed_;
     }
@@ -47,7 +46,7 @@ class SplitMix64 {
         return arr[this.randint(0, arr.length)];
     }
 }
-class utilities {
+export class utilities {
     constructor() { }
     /**
     * simple copy of object by reference
@@ -84,7 +83,7 @@ class utilities {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
-class sorting {
+export class sorting {
     constructor() { }
     /**
      * InsertionSort, time complexity: O(n^2)
@@ -178,8 +177,3 @@ class sorting {
         return copy;
     }
 }
-module.exports = {
-    utilities,
-    SplitMix64,
-    sorting
-};

@@ -1,0 +1,6 @@
+0.2.0-snapshot-4:
+- migrated from commonjs to ESmodules
+
+0.2.0-snapshot-3:
+- added quicksort
+- added jsdoc for sorting class

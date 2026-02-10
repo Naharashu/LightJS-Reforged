@@ -1,6 +1,6 @@
 {
   "name": "lightjs-reforged",
-  "version": "0.1.0",
+  "version": "0.2.0-snapshot",
   "description": "Remake of old LightJS",
   "main": "index.js",
   "scripts": {
@@ -9,5 +9,5 @@
   "keywords": ["lib", "library"],
   "author": "",
   "license": "MPL-2.0",
-  "type": "commonjs"
+  "type": "module"
 }
