@@ -82,6 +82,23 @@ class utilities {
     eqTypes(a: any, b: any) {
         return (typeof a == typeof b);
     }
+
+    /**
+     * @param {number} ms time to wait in miliseconds 
+     * @returns promise
+     */
+    wait(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+
+class sorting {
+    constructor() {}
+
+    InsertionSort(arr: number[]): number[] {
+        let res = arr;
+        return res;
+    }
 }
 
 module.exports = {

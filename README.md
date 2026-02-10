@@ -1,4 +1,4 @@
 # LightJS-Reforged
 Remake of old LightJS
 
-version: 0.1.0
+version: 0.2.0-snapshot-1
