@@ -76,8 +76,59 @@ class utilities {
     eqTypes(a, b) {
         return (typeof a == typeof b);
     }
+    /**
+     * @param {number} ms time to wait in miliseconds
+     * @returns promise
+     */
+    wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+}
+class sorting {
+    constructor() { }
+    InsertionSort(arr) {
+        if (arr.length == 0) {
+            return arr;
+        }
+        let sorted = arr;
+        let j = 0;
+        for (let i = 1; i < arr.length; i++) {
+            let el = arr[i];
+            j = i - 1;
+            while (j >= 0 && arr[j] > el) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = el;
+        }
+        return sorted;
+    }
+    ShellSort(arr) {
+        if (arr.length == 0) {
+            return arr;
+        }
+        let gap = 1;
+        while (gap < arr.length)
+            gap = 3 * gap + 1;
+        let temp;
+        let j = 0;
+        while (gap >= 1) {
+            for (let i = gap; i < arr.length; i++) {
+                temp = arr[i];
+                j = i;
+                while (j >= gap && arr[j - gap] > temp) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
+                }
+                arr[j] = temp;
+            }
+            gap = Math.floor(gap / 3);
+        }
+        return arr;
+    }
 }
 module.exports = {
     utilities,
-    SplitMix64
+    SplitMix64,
+    sorting
 };
