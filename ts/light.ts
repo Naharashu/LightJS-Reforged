@@ -64,12 +64,12 @@ class utilities {
     }
 
     /**
-    * deep copy of objec
+    * json copy of objec
     * @param {any} obj any object
-    * @return deep copy of object
+    * @return json copy of object
     * 
     */
-    deepclone(obj: any) {
+    jsonclone(obj: any) {
         return JSON.parse(JSON.stringify(obj));
     }
 
@@ -95,8 +95,13 @@ class utilities {
 class sorting {
     constructor() {}
 
+    /**
+     * InsertionSort, time complexity: O(n^2)
+     * @param {number} arr unsorted array
+     * @returns sorted array
+     */
     InsertionSort(arr: number[]): number[] {
-        if(arr.length == 0) {
+        if(arr.length == 0 || arr.length == 1) {
             return arr;
         }
         let sorted: number[] = arr;
@@ -113,10 +118,16 @@ class sorting {
         return sorted;
     }
 
-    ShellSort(arr: number[]): number[] {
-        if(arr.length == 0) {
-            return arr;
+    /**
+     * ShellSort with Knuts gap sequence, Time complexity: O(n^(3/2))
+     * @param {number[]} array unsorted array 
+     * @returns sorted array
+     */
+    ShellSort(array: number[]): number[] {
+        if(array.length == 0 || array.length == 1) {
+            return array;
         }
+        let arr: number[] = array;
         let gap = 1;
         while(gap < arr.length) gap = 3 * gap + 1;
         let temp: number;
@@ -134,6 +145,49 @@ class sorting {
             gap = Math.floor(gap/3);
         }
         return arr;
+    }
+
+    /**
+     * swap values of two variables
+     * @param {any} a - fist var(b=a) 
+     * @param {any} b - second var(a=b) 
+     * @returns void
+     */
+    swap(a: any, b: any): void {
+        const c: any = a;
+        a = b;
+        b = c;
+        return;
+    }
+
+    partition_qsort(arr: number[], low: number, high: number): number {
+        let pivot: number = arr[high];
+        let i: number = low-1;
+        for(let j=0;j<high;j++) {
+            if(arr[j]<=pivot) {
+                i+=1;
+                this.swap(arr[i+1], arr[high]);
+            }
+        }
+        return i+1;
+    }
+
+    /**
+     * QuickSort, Time complexity: O(n log n)
+     * @param {number[]} arr unsorted array 
+     * @returns sorted array
+     */
+    QuickSort(arr: number[], low: number, high: number): number[] {
+        if(arr.length == 0 || arr.length == 1) {
+            return arr;
+        }
+        let copy: number[] = arr;
+        if(low<high) {
+            let index: number = this.partition_qsort(copy, low, high);
+            this.QuickSort(copy, low, index-1);
+            this.QuickSort(copy, index+1, high);
+        }
+        return copy;
     }
 }
 
